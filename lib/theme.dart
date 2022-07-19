@@ -21,6 +21,35 @@ ThemeData lightThemeData(BuildContext context) {
       unselectedItemColor: kContentColorLightTheme.withOpacity(0.33),
       selectedIconTheme: const IconThemeData(color: kPrimaryColor),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
+            color: kContentColorLightTheme,
+          ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kPrimaryColor,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kPrimaryColor,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kPrimaryColor,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kPrimaryColor,
+        ),
+      ),
+    ),
   );
 }
 
@@ -42,6 +71,35 @@ ThemeData darkThemeData(BuildContext context) {
       selectedItemColor: Colors.white70,
       unselectedItemColor: kContentColorDarkTheme.withOpacity(0.33),
       selectedIconTheme: const IconThemeData(color: kPrimaryColor),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
+            color: kContentColorDarkTheme,
+          ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kContentColorDarkTheme,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kContentColorDarkTheme,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kContentColorDarkTheme,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(
+          color: kContentColorDarkTheme,
+        ),
+      ),
     ),
   );
 }

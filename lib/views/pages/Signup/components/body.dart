@@ -5,11 +5,10 @@ import 'package:e_commerce_complete_app/views/widgets/rounded_input_text_field.d
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
-  const Body({super.key});
+  const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     final formKey = GlobalKey<FormState>();
     final emailControler = TextEditingController();
     final passwordControler = TextEditingController();
@@ -24,7 +23,7 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Login",
+                "Signup",
                 style: Theme.of(context).textTheme.headline3?.copyWith(
                       color: MediaQuery.of(context).platformBrightness ==
                               Brightness.dark
@@ -33,6 +32,14 @@ class Body extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: kDefaultPadding * 2),
+              RoundedInputTextField(
+                controler: emailControler,
+                msgValidator: 'Please enter your username',
+                hintText: "Enter your Username",
+                label: "Username",
+                onChanged: (value) {},
+              ),
+              const SizedBox(height: kDefaultPadding),
               RoundedInputTextField(
                 controler: emailControler,
                 msgValidator: 'Please enter your email',
@@ -50,31 +57,13 @@ class Body extends StatelessWidget {
                 onChanged: (value) {},
               ),
               const SizedBox(height: kDefaultPadding),
-              Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () => Navigator.of(context)
-                      .pushReplacementNamed(AppRoutes.forgotPassword),
-                  child: Text(
-                    "Forgot your password?",
-                    style: TextStyle(
-                      color: MediaQuery.of(context).platformBrightness ==
-                              Brightness.light
-                          ? kContentColorLightTheme
-                          : kContentColorDarkTheme,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: kDefaultPadding),
               MainButton(text: "Login", press: () {}),
               const SizedBox(height: kDefaultPadding * 3),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an Acount ? ",
+                    "Already have an Acount ? ",
                     style: TextStyle(
                       color: MediaQuery.of(context).platformBrightness ==
                               Brightness.light
@@ -84,9 +73,9 @@ class Body extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () => Navigator.of(context)
-                        .pushReplacementNamed(AppRoutes.signupPage),
+                        .pushReplacementNamed(AppRoutes.loginPage),
                     child: Text(
-                      "Sign Up",
+                      "Sign In",
                       style: TextStyle(
                         color: MediaQuery.of(context).platformBrightness ==
                                 Brightness.light
