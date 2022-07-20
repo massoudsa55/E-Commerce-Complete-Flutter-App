@@ -10,6 +10,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    final usernameControler = TextEditingController();
     final emailControler = TextEditingController();
     final passwordControler = TextEditingController();
     return SafeArea(
@@ -33,7 +34,7 @@ class Body extends StatelessWidget {
               ),
               const SizedBox(height: kDefaultPadding * 2),
               RoundedInputTextField(
-                controler: emailControler,
+                controler: usernameControler,
                 msgValidator: 'Please enter your username',
                 hintText: "Enter your Username",
                 label: "Username",
