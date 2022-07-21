@@ -8,9 +8,10 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    //Size size = MediaQuery.of(context).size;
     final formKey = GlobalKey<FormState>();
     final emailControler = TextEditingController();
+    final emailFocusNode = FocusNode();
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -43,6 +44,9 @@ class Body extends StatelessWidget {
               const SizedBox(height: kDefaultPadding * 2),
               RoundedInputTextField(
                 controler: emailControler,
+                focusNode: emailFocusNode,
+                onEditingComplete: () =>
+                    FocusScope.of(context).requestFocus(emailFocusNode),
                 msgValidator: 'Please enter your email',
                 hintText: "Enter your email",
                 label: "Email",

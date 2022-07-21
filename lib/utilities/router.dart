@@ -1,30 +1,34 @@
 import 'package:e_commerce_complete_app/utilities/routes.dart';
 import 'package:e_commerce_complete_app/views/pages/Forgot%20Passourd/forgot_password.dart';
-import 'package:e_commerce_complete_app/views/pages/Signup/signup_page.dart';
+import 'package:e_commerce_complete_app/views/pages/Home/home_page.dart';
 import 'package:e_commerce_complete_app/views/pages/landing_page.dart';
-import 'package:e_commerce_complete_app/views/pages/login/login_page.dart';
-import 'package:flutter/material.dart';
+import 'package:e_commerce_complete_app/views/pages/login/auth_page.dart';
+import 'package:flutter/cupertino.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.landingPageRoute:
-      return MaterialPageRoute(
+      return CupertinoPageRoute(
         builder: (_) => const LandingPage(),
+        settings: settings,
       );
-    case AppRoutes.loginPage:
-      return MaterialPageRoute(
-        builder: (_) => const LoginPage(),
+    case AppRoutes.authPageRoute:
+      return CupertinoPageRoute(
+        builder: (_) => const AuthPage(),
+        settings: settings,
       );
-    case AppRoutes.signupPage:
-      return MaterialPageRoute(
-        builder: (_) => const SignupPage(),
-      );
-    case AppRoutes.forgotPassword:
-      return MaterialPageRoute(
+    case AppRoutes.forgotPasswordRoute:
+      return CupertinoPageRoute(
         builder: (_) => const ForgotPassword(),
+        settings: settings,
+      );
+    case AppRoutes.homePageRoute:
+      return CupertinoPageRoute(
+        builder: (_) => const HomePage(),
+        settings: settings,
       );
     default:
-      return MaterialPageRoute(
+      return CupertinoPageRoute(
         builder: (_) => const LandingPage(),
       );
   }

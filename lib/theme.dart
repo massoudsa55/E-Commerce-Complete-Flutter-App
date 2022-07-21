@@ -38,15 +38,15 @@ ThemeData lightThemeData(BuildContext context) {
         ),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
-          color: kPrimaryColor,
+          color: kErrorColor,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
-          color: kPrimaryColor,
+          color: kErrorColor,
         ),
       ),
     ),
@@ -77,27 +77,27 @@ ThemeData darkThemeData(BuildContext context) {
             color: kContentColorDarkTheme,
           ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
           color: kContentColorDarkTheme,
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
           color: kContentColorDarkTheme,
         ),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
-          color: kContentColorDarkTheme,
+          color: kErrorColor,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
         borderSide: const BorderSide(
-          color: kContentColorDarkTheme,
+          color: kErrorColor,
         ),
       ),
     ),
