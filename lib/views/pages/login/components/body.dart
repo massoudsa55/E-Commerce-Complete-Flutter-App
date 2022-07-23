@@ -15,16 +15,16 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  final formKey = GlobalKey<FormState>();
+  final emailControler = TextEditingController();
+  final passwordControler = TextEditingController();
+  final usernameControler = TextEditingController();
+  final emailFocusNode = FocusNode();
+  final usernameFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+  var authType = AuthFormType.login;
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final emailControler = TextEditingController();
-    final passwordControler = TextEditingController();
-    final usernameControler = TextEditingController();
-    final emailFocusNode = FocusNode();
-    final usernameFocusNode = FocusNode();
-    final passwordFocusNode = FocusNode();
-    var authType = AuthFormType.login;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -137,14 +137,9 @@ class _BodyState extends State<Body> {
                     onTap: () {
                       formKey.currentState!.reset();
                       setState(() {
-                        if (authType == AuthFormType.login) {
-                          authType = AuthFormType.signup;
-                        } else {
-                          authType = AuthFormType.login;
-                        }
-                        // authType = (authType == AuthFormType.login)
-                        //     ? AuthFormType.signup
-                        //     : AuthFormType.login;
+                        authType = (authType == AuthFormType.login)
+                            ? AuthFormType.signup
+                            : AuthFormType.login;
                       });
                     },
                   ),
