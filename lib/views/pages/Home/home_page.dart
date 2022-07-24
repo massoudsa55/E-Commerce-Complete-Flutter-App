@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         // Screen transition animation on change of selected tab.
         animateTabTransition: true,
         curve: Curves.ease,
-        duration: const Duration(milliseconds: 200),
+        duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
           NavBarStyle.style1, // Choose the nav bar style with this property.
