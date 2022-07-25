@@ -1,3 +1,4 @@
+import 'package:e_commerce_complete_app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -15,11 +16,11 @@ class _HomePageState extends State<HomePage> {
   final bottomNavBarController = PersistentTabController();
   List<Widget> _buildScreens() {
     return [
-      const MainScreen(txtMSG: "Main Screen"),
-      const MainScreen(txtMSG: "Shop Screen"),
-      const MainScreen(txtMSG: "Cart Screen"),
-      const MainScreen(txtMSG: "Favorite Screen"),
-      const MainScreen(txtMSG: "Profile Screen"),
+      const MainScreen(),
+      Container(),
+      Container(),
+      Container(),
+      Container(),
     ];
   }
 
@@ -28,31 +29,31 @@ class _HomePageState extends State<HomePage> {
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.home),
         title: ("Home"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.bag),
         title: ("Shop"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.cart),
         title: ("Cart"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.square_favorites),
         title: ("Favorites"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.profile_circled),
         title: ("Profile"),
-        activeColorPrimary: CupertinoColors.activeBlue,
+        activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
     ];
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+          NavBarStyle.style9, // Choose the nav bar style with this property.
     ));
   }
 }
