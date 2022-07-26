@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return Column(
       children: [
         const TopTitleAndImage(),
@@ -33,7 +33,9 @@ class MainScreen extends StatelessWidget {
               //   itemCount: getProducts.length,
               //   itemBuilder: (context, index) =>
               ItemCard(product: getProducts[0]),
-              //),
+              Row(
+                children: [],
+              ),
             ],
           ),
         ),

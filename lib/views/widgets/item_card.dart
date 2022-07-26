@@ -13,7 +13,79 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Column(
+    return SizedBox(
+      width: size.width * 0.4,
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              FadeInImage.assetNetwork(
+                placeholder: "assets/icons/spinner.gif",
+                image: product.imgURL,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 3.0),
+                  child: Container(
+                    width: 50,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "${product.discountValue}%",
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            padding: const EdgeInsets.all(kDefaultPadding / 3),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+              color: kPrimaryColor.withOpacity(0.5),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(0, 10),
+                  blurRadius: 50,
+                  color: kPrimaryColor.withOpacity(0.2),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("${product.title}\n",
+                        style: Theme.of(context).textTheme.button),
+                    Text(
+                      "\$${product.price}\n",
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(color: Colors.grey),
+                    ),
+                  ],
+                ),
+                Text("${product.category}\n",
+                    style: Theme.of(context).textTheme.button),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    /*return Column(
       children: [
         Stack(
           children: [
@@ -54,9 +126,10 @@ class ItemCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       "${product.discountValue}%",
-                      style: Theme.of(context).textTheme.caption!.copyWith(
-                            color: Colors.white,
-                          ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .caption!
+                          .copyWith(color: Colors.white),
                     ),
                   ),
                 ),
@@ -69,7 +142,7 @@ class ItemCard extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],
-    );
+    );*/
 
     /*SizedBox(
       child: DecoratedBox(
