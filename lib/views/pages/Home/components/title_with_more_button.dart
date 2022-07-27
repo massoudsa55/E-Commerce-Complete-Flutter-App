@@ -24,7 +24,10 @@ class TitleWithMoreButton extends StatelessWidget {
               title,
               style: Theme.of(context).textTheme.headline4?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: MediaQuery.of(context).platformBrightness ==
+                            Brightness.light
+                        ? kContentColorLightTheme
+                        : kContentColorDarkTheme,
                   ),
             ),
             InkWell(
