@@ -3,7 +3,7 @@ import 'package:e_commerce_complete_app/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   const ItemCard({
     Key? key,
     required this.product,
@@ -16,11 +16,17 @@ class ItemCard extends StatelessWidget {
   final VoidCallback press;
 
   @override
+  State<ItemCard> createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+  bool isCheck = false;
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
     return GestureDetector(
-      onTap: press,
+      onTap: widget.press,
       child: Container(
         margin: const EdgeInsets.only(
           right: kDefaultPadding,
@@ -33,11 +39,11 @@ class ItemCard extends StatelessWidget {
               children: [
                 FadeInImage.assetNetwork(
                   placeholder: "assets/icons/spinner.gif",
-                  image: product.imgURL,
+                  image: widget.product.imgURL,
                   height: size.height * 0.3,
                   fit: BoxFit.cover,
                 ),
-                if (product.discountValue != null)
+                if (widget.product.discountValue != null)
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
@@ -58,7 +64,7 @@ class ItemCard extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            "${product.discountValue}%",
+                            "${widget.product.discountValue}%",
                             style: Theme.of(context)
                                 .textTheme
                                 .button!
@@ -78,11 +84,18 @@ class ItemCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,
                     ),
-                    child: Icon(
-                      Icons.favorite_border,
-                      color: isItemChacked
-                          ? Colors.redAccent
-                          : CupertinoColors.systemGrey,
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          isCheck = isCheck == true ? false : true;
+                        });
+                      },
+                      child: Icon(
+                        Icons.favorite,
+                        color: isCheck
+                            ? Colors.redAccent
+                            : CupertinoColors.systemGrey,
+                      ),
                     ),
                   ),
                 ),
@@ -110,13 +123,13 @@ class ItemCard extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: "${product.title}\n",
+                          text: "${widget.product.title}\n",
                           style: Theme.of(context).textTheme.button!.copyWith(
                                 color: Colors.black,
                               ),
                         ),
                         TextSpan(
-                          text: product.category.toUpperCase(),
+                          text: widget.product.category.toUpperCase(),
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.5),
                           ),
@@ -125,13 +138,36 @@ class ItemCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  Text(
-                    "\$${product.price}",
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        ?.copyWith(color: kPrimaryColor),
-                  ),
+                  if (widget.product.discountValue != null)
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "\$${widget.product.price}\n",
+                            style: Theme.of(context).textTheme.button?.copyWith(
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                          ),
+                          TextSpan(
+                            text:
+                                "\$${widget.product.price * widget.product.discountValue! / 100}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .button
+                                ?.copyWith(color: kPrimaryColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if (widget.product.discountValue == null)
+                    Text(
+                      "\$${widget.product.price}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          ?.copyWith(color: kPrimaryColor),
+                    ),
                 ],
               ),
             ),

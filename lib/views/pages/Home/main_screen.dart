@@ -19,8 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   bool isItemChecked = false;
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
+    //var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -45,10 +44,10 @@ class _MainScreenState extends State<MainScreen> {
                         product: getProducts[index],
                         isItemChacked: isItemChecked,
                         press: () {
-                          setState(() {
-                            isItemChecked =
-                                isItemChecked == true ? false : true;
-                          });
+                          // setState(() {
+                          //   isItemChecked =
+                          //       isItemChecked == true ? false : true;
+                          // });
                         },
                       ),
                     ),
