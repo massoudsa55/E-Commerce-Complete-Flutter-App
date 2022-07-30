@@ -33,6 +33,12 @@ class _ItemCardState extends State<ItemCard> {
           bottom: kDefaultPadding,
         ),
         width: size.width * 0.4,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
         child: Column(
           children: [
             Stack(
