@@ -1,4 +1,3 @@
-import 'package:e_commerce_complete_app/controllers/auth_controller.dart';
 import 'package:e_commerce_complete_app/utilities/auth.dart';
 import 'package:e_commerce_complete_app/views/pages/Home/home_page.dart';
 import 'package:e_commerce_complete_app/views/pages/login/auth_page.dart';
@@ -15,12 +14,10 @@ class LandingPage extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: auth.authStateChanges(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.active) {
-          final user = snapshot.data;
-          if (user == null) {
-            return const AuthPage();
-          }
-          return const HomePage();
+        switch (snapshot.connectionState) {
+          case ConnectionState.active:
+            return snapshot.hasData ? const HomePage() : const AuthPage();
+          default:
         }
         // TOTO: i will refactor this code
         return const Scaffold(
