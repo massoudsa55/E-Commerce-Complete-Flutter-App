@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'Forgot Passourd/forgot_password.dart';
+
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
 
@@ -16,7 +18,7 @@ class LandingPage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.active:
-            return snapshot.hasData ? const HomePage() : const AuthPage();
+            return snapshot.hasData ? const ForgotPassword() : const AuthPage();
           default:
         }
         // TOTO: i will refactor this code

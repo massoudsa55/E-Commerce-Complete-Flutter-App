@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:e_commerce_complete_app/constants.dart';
 import 'package:e_commerce_complete_app/views/widgets/main_button.dart';
 import 'package:e_commerce_complete_app/views/widgets/rounded_input_text_field.dart';
@@ -9,6 +10,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Size size = MediaQuery.of(context).size;
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final formKey = GlobalKey<FormState>();
     final emailControler = TextEditingController();
     final emailFocusNode = FocusNode();
@@ -54,7 +56,18 @@ class Body extends StatelessWidget {
               ),
               const SizedBox(height: kDefaultPadding),
               const SizedBox(height: kDefaultPadding),
-              MainButton(text: "Send", press: () {}),
+              MainButton(
+                  text: "Send",
+                  press: () async {
+                    print("loading = false");
+                    try {
+                      await firebaseAuth.sendPasswordResetEmail(
+                          email: "massoudsa55@gmail.com");
+                      print("loading = true");
+                    } on FirebaseAuthException catch (e) {
+                      print(e.code.toString());
+                    }
+                  }),
               const SizedBox(height: kDefaultPadding * 3),
             ],
           ),
